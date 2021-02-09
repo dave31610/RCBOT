@@ -1,6 +1,7 @@
 const discord = require("discord.js");
 const botdash = require("botdash.pro")
 const botConfig = require("./botconfig.json");
+const levelFile = require("./data/levels.json");
 
 const activeSongs = new Map();
 
@@ -141,7 +142,7 @@ client.on("message", async message => {
     var messageArray = message.content.split(" ");
 
 
-    var swearWords = JSON.parse(fs.readFileSync("./data/swaerWords.json"));
+    var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
 
     var senteceUser = "";
     var amountSwearWords = 0;
@@ -179,9 +180,9 @@ client.on("message", async message => {
         message.channel.send("Niet vloeken a.u.b.");
     }
 
-
-
     var command = messageArray[0];
+
+    RandomXP(message);
 
     if (!message.content.startsWith(prefix)) return;
 
@@ -197,3 +198,46 @@ client.on("message", async message => {
     if (commands) commands.run(client, message, arguments, options);
 
 });
+
+function RandomXP(message) {
+
+    var randomNumber = Math.floor(Math.random() * 15) + 1;
+
+    console.log(randomNumber);
+
+    var idUser = message.author.id;
+
+    if(!levelFile[idUser]) {
+        levelFile[idUser] = {
+            xp: 0,
+            level: 0
+        
+         }
+       }
+    
+
+    levelFile[idUser].xp += randomNumber;
+
+    var levelUser = levelFile[idUser].level;
+    var xpUser = levelFile[idUser].xp;
+
+    var nextLevelXP = levelUser *300;
+
+    if(nextLevelXP == 0) nextLevelXP = 100;
+
+    if(xpUser => nextLevelXP){
+
+        levelFile[idUser].level += 1;
+
+        fs.writeFile("./data/levels.json", JSON.stringify(levelFile), err => {
+            if (err) console.log(err);
+        });
+
+        var embedLevel = new.discord.MessageEmbed()
+            .setDescription("***Level hoger***")
+            .setColor("#00ff00")
+            .addField("Nieuw level: ", levelFile[idUser].level);
+        message.channel.send(embedLevel);
+
+    }
+}
