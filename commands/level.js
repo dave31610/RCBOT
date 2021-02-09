@@ -1,6 +1,6 @@
 const discord = require("discord.js")
 const fs = require("fs");
-const canvaCord = require("canvarcord");
+const canvacord = require("canvacord");
 
 module.exports.run = async (client, message, args) => {
 
@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
 
     if (levelFile[member]) {
 
-        const rank = new canvaCord.Rank()
+        const rank = new canvacord.Rank()
         .setAvatar(message.author.displayAvatarURL({dynamic: false, format: 'png'}))
         .setCurrentXP(levelFile[member].xp)
         .setLevel(levelFile[member].level)
