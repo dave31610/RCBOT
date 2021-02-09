@@ -101,5 +101,6 @@ async function promptMessage(message, author, time, reactions) {
 module.exports.help = {
     name: "kick",
     description: "Geeft al de verschillende commands",
-    category: "Administrator"
+    category: "Administrator",
+    aliases:[]
 }

@@ -39,5 +39,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "tempmute",
     description: "Geeft al de verschillende commands",
-    category: "Administrator"
+    category: "Administrator",
+    aliases:[]
 }

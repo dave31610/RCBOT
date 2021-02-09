@@ -9,5 +9,6 @@ return message.channel.send("ik dacht dat je de alles kunner bent nou tot nooit 
 module.exports.help = {
     name: "doei",
     description: "doei",
-    category: "Informatie"
+    category: "Informatie",
+    aliases:[]
 }

@@ -49,5 +49,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "announcement",
     description: "Aankondigings Radio Cornda",
-    category: "Informatie"
+    category: "Informatie",
+    aliases:[]
 }
