@@ -1,4 +1,5 @@
 const discord = require("discord.js");
+const botdash = require("botdash.pro")
 const botConfig = require("./botconfig.json");
 const database = require("./database.json");
 const mysql = require("mysql");
@@ -10,6 +11,7 @@ const fs = require("fs");
 const { isFunction } = require("util");
 
 const client = new discord.Client();
+var dashboard = "";
 
 
 //  Command handler
@@ -79,7 +81,7 @@ client.on("guildMemberAdd", member => {
     });
 
 
-    var channel = member.guild.channels.cache.get('708335622443630624');
+    var channel = member.guild.channels.cache.get('808007386879098951');
 
     if (!channel) return;
 
@@ -99,7 +101,7 @@ client.on("guildMemberAdd", member => {
 
 client.on("guildMemberRemove", member => {
 
-    var channel = member.guild.channels.cache.get('708335622443630624');
+    var channel = member.guild.channels.cache.get('808007386879098951');
 
     if (!channel) return;
 
@@ -119,6 +121,8 @@ client.on("ready", async () => {
     console.log(`${client.user.username} is online.`);
 
     client.user.setActivity("Testing", { type: "PLAYING" });
+
+    dashboard = new botdash.APIclient(botConfig.botdash);
 
 });
 
@@ -165,7 +169,7 @@ client.on("message", async message => {
     // }
 
 
-    var prefix = botConfig.prefix;
+    var prefix = await dashboard.getVal(message.guild.id, "botprefix");
 
     var messageArray = message.content.split(" ");
 
