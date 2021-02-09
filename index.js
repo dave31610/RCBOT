@@ -141,7 +141,7 @@ client.on("messageDelete", messageDeleted => {
         .setTimestamp()
         .setColor("#FF0000");
 
-    client.channels.cache.find(c => c.name == "log").send(embed);
+    client.channels.cache.find(c => c.name == "logs").send(embed);
 
 });
 
@@ -174,7 +174,7 @@ client.on("message", async message => {
     var messageArray = message.content.split(" ");
 
 
-    var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
+    var swearWords = JSON.parse(fs.readFileSync("./data/swaerWords.json"));
 
     var senteceUser = "";
     var amountSwearWords = 0;
