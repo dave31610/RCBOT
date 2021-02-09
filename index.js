@@ -18,11 +18,6 @@ client.commands = new discord.Collection();
 
 client.login(process.env.token);
 
-con.connect(err => {
-    if (err) throw err;
-});
-
-
 //  Command handler
 fs.readdir("./commands/", (err, files) => {
 
