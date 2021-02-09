@@ -1,6 +1,6 @@
 {
     "host": "eu-cdbr-west-03.cleardb.net",
     "user": "b3f03a8dfe8e68",
-    "password": "2d766af",
-    "database": "rcbot"
+    "password": "2d766afd",
+    "database": "heroku_ab092136975ee30"
 }
