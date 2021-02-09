@@ -1,8 +1,6 @@
 const discord = require("discord.js");
 const botdash = require("botdash.pro")
 const botConfig = require("./botconfig.json");
-const database = require("./database.json");
-const mysql = require("mysql");
 
 const activeSongs = new Map();
 
@@ -19,13 +17,6 @@ client.commands = new discord.Collection();
 
 
 client.login(process.env.token);
-
-var con = mysql.createConnection({
-    host: database.host,
-    user: database.user,
-    password: database.password,
-    database: database.database
-});
 
 con.connect(err => {
     if (err) throw err;
@@ -57,35 +48,16 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("guildMemberAdd", member => {
 
-    // var role = member.guild.roles.cache.get('462166173690232842');
+    var role = member.guild.roles.cache.get('731166398252056706');
 
-    // if (!role) return;
+    if (!role) return;
 
-    // member.roles.add(role);
-
-
-    con.query(`SELECT IDRole FROM rollen WHERE IDUser = '${member.user.id}'`, (err, rows) => {
-
-        if (err) throw err;
-
-        if (rows.length > 0) {
-
-            for (let index = 0; index < rows.length; index++) {
-                const role = rows[index];
-
-                member.roles.add(role.IDRole);
-            }
-
-        }
-
-    });
-
-
+    member.roles.add(role);
     var channel = member.guild.channels.cache.get('808007386879098951');
 
     if (!channel) return;
 
-    // channel.send(`Welkom bij de server ${member}`);
+    channel.send(`Welkom bij de server ${member}`);
 
     var joinEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
