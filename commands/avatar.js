@@ -1,5 +1,4 @@
 const discord = require("discord.js");
-const { emit } = require("nodemon");
 
 module.exports.run = async (client, message, args) => {
 
