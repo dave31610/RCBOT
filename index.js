@@ -238,7 +238,6 @@ function RandomXP(message) {
             if (err) console.log(err);
         });
 
-    } else {
             var embedLevel = new discord.MessageEmbed()
             .setDescription("***Level hoger***")
             .setColor("#00ff00")
