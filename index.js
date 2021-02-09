@@ -1,6 +1,7 @@
 const discord = require("discord.js");
-const botdash = require("botdash.pro")
 const botConfig = require("./botconfig.json");
+const database = require("./database.json");
+const mysql = require("mysql");
 
 const activeSongs = new Map();
 
@@ -9,14 +10,24 @@ const fs = require("fs");
 const { isFunction } = require("util");
 
 const client = new discord.Client();
-var dashboard ="";
 
 
 //  Command handler
 client.commands = new discord.Collection();
 
 
-client.login(process.env.token);
+client.login(botConfig.token);
+
+var con = mysql.createConnection({
+    host: database.host,
+    user: database.user,
+    password: database.password,
+    database: database.database
+});
+
+con.connect(err => {
+    if (err) throw err;
+});
 
 
 //  Command handler
@@ -44,17 +55,35 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("guildMemberAdd", member => {
 
-    var role = member.guild.roles.cache.get('808007386879098951');
+    // var role = member.guild.roles.cache.get('462166173690232842');
 
-    if (!role) return;
+    // if (!role) return;
 
-    member.roles.add(role);
+    // member.roles.add(role);
 
-    var channel = member.guild.channels.cache.get('808007386879098951');
+
+    con.query(`SELECT IDRole FROM rollen WHERE IDUser = '${member.user.id}'`, (err, rows) => {
+
+        if (err) throw err;
+
+        if (rows.length > 0) {
+
+            for (let index = 0; index < rows.length; index++) {
+                const role = rows[index];
+
+                member.roles.add(role.IDRole);
+            }
+
+        }
+
+    });
+
+
+    var channel = member.guild.channels.cache.get('708335622443630624');
 
     if (!channel) return;
 
-    channel.send(`Welkom bij de server ${member}`);
+    // channel.send(`Welkom bij de server ${member}`);
 
     var joinEmbed = new discord.MessageEmbed()
         .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
@@ -70,7 +99,7 @@ client.on("guildMemberAdd", member => {
 
 client.on("guildMemberRemove", member => {
 
-    var channel = member.guild.channels.cache.get('808007386879098951');
+    var channel = member.guild.channels.cache.get('708335622443630624');
 
     if (!channel) return;
 
@@ -89,9 +118,7 @@ client.on("ready", async () => {
 
     console.log(`${client.user.username} is online.`);
 
-    client.user.setActivity("welkom bij radio cornda", { type: "PLAYING" });
-
-    dashboard = new botdash.APIclient(botConfig.botdash);
+    client.user.setActivity("Testing", { type: "PLAYING" });
 
 });
 
@@ -110,7 +137,7 @@ client.on("messageDelete", messageDeleted => {
         .setTimestamp()
         .setColor("#FF0000");
 
-    client.channels.cache.find(c => c.name == "logs").send(embed);
+    client.channels.cache.find(c => c.name == "log").send(embed);
 
 });
 
@@ -138,13 +165,12 @@ client.on("message", async message => {
     // }
 
 
-    // var prefix = botConfig.prefix;
-    var prefix = await dashboard.getVal(message.guild.id, "botprefix");
+    var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
 
 
-    var swearWords = JSON.parse(fs.readFileSync("./data/swaerWords.json"));
+    var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
 
     var senteceUser = "";
     var amountSwearWords = 0;
