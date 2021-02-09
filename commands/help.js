@@ -64,5 +64,5 @@ module.exports.help = {
     name: "help",
     description: "help commands",
     category: "Algemeen",
-    aliases:[]
+    aliases:["hp"]
 }
