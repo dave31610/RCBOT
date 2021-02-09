@@ -15,5 +15,7 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "info"
+    name: "info",
+    description: "info van radio cornda",
+    category: "Informatie"
 }

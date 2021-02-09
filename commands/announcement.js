@@ -48,6 +48,6 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: "announcement",
-    description: "Geeft al de verschillende commands",
+    description: "Aankondigings Radio Cornda",
     category: "Informatie"
 }

@@ -32,6 +32,6 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: "clear",
-    description: "Geeft al de verschillende commands",
+    description: "Berichten Verwijderen",
     category: "Informatie"
 }

@@ -8,6 +8,6 @@ return message.channel.send("ik dacht dat je de alles kunner bent nou tot nooit 
 
 module.exports.help = {
     name: "doei",
-    description: "Geeft al de verschillende commands",
+    description: "doei",
     category: "Informatie"
 }
