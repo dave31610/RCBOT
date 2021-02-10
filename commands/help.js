@@ -62,9 +62,9 @@ module.exports.run = async (client, message, args) => {
 
     }
 
+    response += Administrator;
     response += general;
     response += info;
-    response += Administrator;
     response += spellen;
 
     message.author.send(response).then(() => {
