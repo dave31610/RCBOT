@@ -42,7 +42,7 @@ module.exports.run = async (client, message, args) => {
 
     if(command["category"] == "Administrator"){
 
-        info += `${prefix}${command["name"]} - ${command["description"]}\n`;
+        Administrator += `${prefix}${command["name"]} - ${command["description"]}\n`;
     
     } else if(command["category"] == "Algemeen") {
 
@@ -54,7 +54,7 @@ module.exports.run = async (client, message, args) => {
 
         } else if(command["category"] == "spellen"){
 
-                info += `${prefix}${command["name"]} - ${command["description"]}\n`;
+                spellen += `${prefix}${command["name"]} - ${command["description"]}\n`;
 
             
 
@@ -64,6 +64,8 @@ module.exports.run = async (client, message, args) => {
 
     response += general;
     response += info;
+    response += Administrator;
+    response += spellen;
 
     message.author.send(response).then(() => {
         message.channel.send("Alle commands staan in je privé berichten! :mailbox_with_mail:");
