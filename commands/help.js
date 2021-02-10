@@ -31,19 +31,32 @@ module.exports.run = async (client, message, args) => {
     });
 
     var response = "**Bot commands**\n\n";
-    var general = "**__Algemeen__**\n";
+    var Administrator = "**__Administrator__**\n"
+    var general = "\n**__Algemeen__**\n";
     var info = "\n**__Informatie__**\n";
+    var spellen ="\n**__spellen__**\n";
+
 
     for (let i = 0; i < commandList.length; i++) {
         const command = commandList[i];
 
-        if (command["category"] == "Algemeen") {
+    if(command["category"] == "Administrator"){
+
+        info += `${prefix}${command["name"]} - ${command["description"]}\n`;
+    
+    } else if(command["category"] == "Algemeen") {
 
             general += `${prefix}${command["name"]} - ${command["description"]}\n`;
 
         } else if(command["category"] == "Informatie"){
 
             info += `${prefix}${command["name"]} - ${command["description"]}\n`;
+
+        } else if(command["category"] == "spellen"){
+
+                info += `${prefix}${command["name"]} - ${command["description"]}\n`;
+
+            
 
         }
 
