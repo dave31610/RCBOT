@@ -39,5 +39,5 @@ module.exports.help = {
     name: "review",
     description: "revieuw geven aan chat gebruikers",
     category: "Informatie",
-    aliases:[]
+    aliases:["rv"]
 }
