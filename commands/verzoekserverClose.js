@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
-    const categoryID = "808384435128893490";
+    const categoryID = "809096314003652609";
 
     if (!message.member.hasPermission("KICK_MEMBER")) return message.reply("Jij kan dit niet doen");
 
@@ -33,8 +33,8 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "sluiten",
+    name: "verzoeksluiten",
     description: "Geeft al de verschillende commands",
-    category: "Ticketsysteem",
+    category: "Verzoek server",
     aliases:[]
 }
