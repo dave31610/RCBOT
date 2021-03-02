@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     var noRoleUser = message.guild.member(message.mentions.users.first());
     if (!noRoleUser) return message.channel.send("Geen Gebruiker met deze naam gevonden.");
 
-    var role = message.guild.roles.cache.find(r => r.name === "Bezoeker");
+    var role = message.guild.roles.cache.find(r => r.name === "bezoekers");
     if (!role) return message.channel.send("Geen Rol met deze naam gevonden.");
 
     for (let index = 0; index < noRoleUser._roles.length; index++){
