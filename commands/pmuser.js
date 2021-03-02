@@ -21,8 +21,8 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: "hallo",
-    description: "Hallo",
+    name: "pm",
+    description: "prive beicht naar iemand toe sturen",
     category: "Informatie",
     aliases:[]
 }
