@@ -35,6 +35,7 @@ module.exports.run = async (client, message, args) => {
     var general = "\n**__Algemeen__**\n";
     var info = "\n**__Informatie__**\n";
     var spellen ="\n**__spellen__**\n";
+    var verzoekserver ="\n**__verzoek server__**\n";
 
 
     for (let i = 0; i < commandList.length; i++) {
@@ -56,7 +57,9 @@ module.exports.run = async (client, message, args) => {
 
                 spellen += `${prefix}${command["name"]} - ${command["description"]}\n`;
 
-            
+       } else if(command["category"] == "verzoekserver"){
+
+                verzoekserver += `${prefix}${command["name"]} - ${command["description"]}\n`; 
 
         }
 
