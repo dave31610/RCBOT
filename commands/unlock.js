@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     await message.channel.overridePermissions([
 
         {
-            id: message.guild.cache.find(r => r.name == "@everyone").id,
+            id: message.guild.roles.cache.find(r => r.name == "@everyone").id,
             allow: ['SEND_MESSAGES']
         }
 
