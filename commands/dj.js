@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     var user = message.guild.member(message.mentions.users.first());
     if (!user) return message.channel.send("Geen Gebruiker met deze naam gevonden.");
 
-    var role = message.guild.roles.cache.find(r => r.name === "dj's");
+    var role = message.guild.roles.cache.find(r => r.name === "dj");
     if (!role) return message.channel.send("Geen Rol met deze naam gevonden.");
    
     var fultEmbed = new discord.MessageEmbed()
