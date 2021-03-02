@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
         .setColor("#ff0000")
         .setDescription("Deze persoon is al moderator");
 
-    var embed = new discord.messageEmbed()
+    var embed = new discord.MessageEmbed()
     .setTitle("Aanpassing")
     .setColor("#00ff00")
     .addField("Rol aanpassing", `${user.user.username} heeft de rol ${role} gekregen is nu moderator`);
