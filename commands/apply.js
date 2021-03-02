@@ -140,7 +140,7 @@ module.exports.run = async (client, message, args) => {
                                                 .setTitle("Bedankt voor het Solliciteren")
                                                 .setColor("00ff00")
                                                 .setTimestamp()
-                                                .SetDescription(`**Vraag 1:**\n${antwoord1}\n\n**Vraag 2:**\n${antwoord2}\n\n**Vraag 3:**\n${antwoord3}\n\n**Vraag 4:**\n${antwoord4}\n\n**Vraag 5:**\n${antwoord5}\n\n**Vraag 6:**\n${antwoord6}\n\n**Vraag 7:**\n${antwoord7}\n\n**Vraag 8:**\n${antwoord8}`);
+                                                .SetDescription(`**Vraag 1:** \n${antwoord1}\n\n**Vraag 2:** \n${antwoord2}\n\n**Vraag 3:** \n${antwoord3}\n\n**Vraag 4:** \n${antwoord4}\n\n**Vraag 5:** \n${antwoord5}\n\n**Vraag 6:** \n${antwoord6}\n\n**Vraag 7:** \n${antwoord7}\n\n**Vraag 8:** \n${antwoord8}`);
                                             
                                                 settedParent.bulkDelete(16).then(
                                                     settedParent.send(uitkomst)
