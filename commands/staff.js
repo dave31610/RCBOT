@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission("KICK_MEMBERS"))return message.channel.send("Jij kan dit niet doen");
 
-    var user = message.guild.member(message.mentions.user.first());
+    var user = message.guild.member(message.mentions.users.first());
     if (!user) return message.channel.send("Geen Gebruiker met deze naam gevonden.");
 
     var role = message.guild.roles.cache.find(r => r.name === "moderator");
