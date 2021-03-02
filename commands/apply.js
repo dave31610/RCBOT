@@ -145,7 +145,6 @@ module.exports.run = async (client, message, args) => {
                                                 settedParent.bulkDelete(16).then(
                                                     settedParent.send(uitkomst)
                                                 )
-                                            
                                             })
                                         })
                                     })
