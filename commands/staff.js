@@ -10,8 +10,8 @@ module.exports.run = async (client, message, args) => {
     var role = message.guild.roles.cache.find(r => r.name === "moderator");
     if (!role) return message.channel.send("Geen Rol met deze naam gevonden.");
    
-    var fultEmbed = new discord.MessageEmbed()
-        .setTitle("Foutje")
+    var faultEmbed = new discord.MessageEmbed()
+        .setTitle("Foutje!!")
         .setColor("#ff0000")
         .setDescription("Deze persoon is al moderator");
 
@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
     .addField("Rol aanpassing", `${user.user.username} heeft de rol ${role} gekregen is nu moderator`);
 
     if(user.roles.cache.find(r => r.name === role.name)){
-        return message.reply(fultEmbed);
+        return message.reply(faultEmbed);
     }
 
     user.roles.add(role.id) && message.channel.send(embed);
